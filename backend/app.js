@@ -12,9 +12,12 @@ const rootRoute = require('./routes/index');
 const genErrorHandler = require('./middlewares/genErrorHandler');
 const limiter = require('./middlewares/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+
+app.use(cors());
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {

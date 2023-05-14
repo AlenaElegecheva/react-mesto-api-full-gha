@@ -14,14 +14,16 @@ class Api {
   
   getInitialCards() {
     return fetch(this._baseUrl + '/cards', {
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
 
   getUsersData() {
     return fetch(this._baseUrl + '/users/me', {
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
@@ -30,7 +32,8 @@ class Api {
     return fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
       body: JSON.stringify(data),
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
@@ -38,7 +41,8 @@ class Api {
   deleteCards(_id) {
     return fetch(this._baseUrl + '/cards/' + _id, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
@@ -47,7 +51,8 @@ class Api {
     return fetch(this._baseUrl + '/users/me/avatar', {
       method: 'PATCH',
       body: JSON.stringify(data),
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
@@ -55,7 +60,8 @@ class Api {
   changeLikeCardStatus(_id, isLiked) {
     return fetch(this._baseUrl + '/cards/' + _id + '/likes', {
       method: isLiked ? 'PUT' : 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
@@ -64,7 +70,8 @@ class Api {
     return fetch(this._baseUrl + '/cards', {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then(this._checkResponse)
   }
@@ -73,7 +80,7 @@ class Api {
 
 
 export const api = new Api({
-  baseUrl: 'https://elegant.mesto.nomoredomains.monster',
+  baseUrl: 'https://api.elegant.mesto.nomoredomains.monster',
   headers: {
     authorization: '1aba0e2c-04b9-4c00-b9b5-bf0428240f1d',
     'Content-Type': 'application/json'

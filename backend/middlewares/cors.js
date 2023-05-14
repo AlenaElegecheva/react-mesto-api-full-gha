@@ -4,6 +4,7 @@ const allowedCors = [
   'https://api.elegant.mesto.nomoredomains.monster',
   'http://api.elegant.mesto.nomoredomains.monster',
   'localhost:3000',
+  'localhost:3001',
 ];
 
 module.exports = (req, res, next) => {

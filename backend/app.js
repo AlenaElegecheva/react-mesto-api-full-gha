@@ -17,8 +17,6 @@ const cors = require('./middlewares/cors');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(cors);
-
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
@@ -29,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(helmet());
 app.use(limiter);
+app.use(cors);
 app.use(requestLogger); // подключаем логгер запросов
 app.use('/', rootRoute);
 app.use(errorLogger); // подключаем логгер ошибок

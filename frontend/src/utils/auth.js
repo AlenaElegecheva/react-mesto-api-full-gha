@@ -10,7 +10,8 @@ const checkResponse = (res) => {
 export function register(email, password) {
   return fetch(BASE_URL + '/signup', {
     method: 'POST',
-    body: JSON.stringify(email, password),
+    body: JSON.stringify({email, password}),
+    credentials: "include",
     headers: {
       'Content-Type': 'application/json'
     }
@@ -18,10 +19,11 @@ export function register(email, password) {
     .then(checkResponse)
 }
 
-export function login(email, password) {
+export function login (email, password) {
   return fetch(BASE_URL + '/signin', {
     method: 'POST',
-    body: JSON.stringify(email, password),
+    credentials: "include",
+    body: JSON.stringify({email, password}),
     headers: {
       'Content-Type': 'application/json'
     }
@@ -40,7 +42,8 @@ export function getToken(token) {
     headers: {
       "Content-Type": "application/json",
       "Authorization" : `Bearer ${token}`
-    }
+    },
+    credentials: "include"
   })
     .then(checkResponse)
 }

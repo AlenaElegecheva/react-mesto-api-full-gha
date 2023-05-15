@@ -82,7 +82,7 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.elegant.mesto.nomoredomains.monster',
   headers: {
-    authorization: '1aba0e2c-04b9-4c00-b9b5-bf0428240f1d',
+    // authorization: '1aba0e2c-04b9-4c00-b9b5-bf0428240f1d',
     'Content-Type': 'application/json'
   }
 })

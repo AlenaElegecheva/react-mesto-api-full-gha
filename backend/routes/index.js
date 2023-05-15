@@ -7,12 +7,15 @@ const { login, createUser } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const { LINK } = require('../utils/regex');
 const NotFoundError = require('../error/NotFoundError');
+const cors = require('../middlewares/cors');
 
 router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+router.use(cors);
+
 router.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),

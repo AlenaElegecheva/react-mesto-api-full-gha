@@ -1,20 +1,35 @@
 const router = require('express').Router();
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { celebrate, Joi } = require('celebrate');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const cors = require('cors');
 const userRouter = require('./users');
 const cardRouter = require('./cards');
 const { login, createUser } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const { LINK } = require('../utils/regex');
 const NotFoundError = require('../error/NotFoundError');
-const cors = require('../middlewares/cors');
+// const cors = require('../middlewares/cors');
+const allowedCors = [
+  'https://elegant.mesto.nomoredomains.monster',
+  'http://elegant.mesto.nomoredomains.monster',
+  'https://api.elegant.mesto.nomoredomains.monster',
+  'http://api.elegant.mesto.nomoredomains.monster',
+  'localhost:3000',
+  'localhost:3002',
+];
 
 router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-router.use(cors);
+
+router.use(cors({
+  origin: allowedCors,
+  credentials: true,
+}));
+// router.use(cors);
 
 router.post('/signin', celebrate({
   body: Joi.object().keys({

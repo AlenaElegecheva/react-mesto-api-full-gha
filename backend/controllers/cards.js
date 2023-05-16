@@ -8,7 +8,7 @@ const BadDataError = require('../error/BadDataError');
 const cardDataUpdate = (req, res, updateData, next) => { // общий метод для обновления данных пользователя в лайках
   Card.findByIdAndUpdate(req.params.cardId, updateData, { new: true })
     .then((card) => {
-      if (card) res.send({ data: card });
+      if (card) res.send(card);
       else {
         throw new NotFoundError('Карточка не найдена');
       }
@@ -25,7 +25,7 @@ const cardDataUpdate = (req, res, updateData, next) => { // общий мето�
 
 module.exports.getAllCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 

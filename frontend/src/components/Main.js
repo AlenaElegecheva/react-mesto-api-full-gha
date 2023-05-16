@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
   const currentUser = useContext(CurrentUserContext);
-  const cards = Array.from(props.cards)
+  // const cards = Array.from(props.cards)
 
   return (
     <main className="page">
@@ -20,7 +20,7 @@ function Main(props) {
         <button className="btn profile__add-btn" type="button" aria-label="добавить" onClick={props.onAddPlace}></button>
       </section>
       <section className="photo-grid">
-        {cards.map((card) => {
+        {props.cards.map((card) => {
           return (
             <Card
               key={card._id}

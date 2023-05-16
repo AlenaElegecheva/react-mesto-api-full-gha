@@ -52,7 +52,7 @@ function App() {
   }
 
   function handleCardLike(card) { // лайки на карточки
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
@@ -62,10 +62,10 @@ function App() {
       })
   }
 
-  function handleDeleteClick(_id) { //удаление карточек
-    api.deleteCards(_id)
+  function handleDeleteClick(card) { //удаление карточек
+    api.deleteCards(card._id)
       .then(() => {
-        setCards((state) => state.filter((d) => d._id !== _id))
+        setCards((state) => state.filter((d) => d._id !== card._id))
       })
       .catch((err) => {
         console.log(err);

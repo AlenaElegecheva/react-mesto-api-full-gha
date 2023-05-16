@@ -144,10 +144,10 @@ function App() {
   function checkToken() { // проверка токена
     // const jwt = localStorage.getItem('jwt')
       auth.getToken()
-        .then((res) => {
+        .then((data) => {
             setLoggedIn(true);
-            setUserInfo(res.data.email)
-            console.log(res);
+            setUserInfo(data.email)
+            console.log(data);
             navigate('/', { replace: true })
         })
         .catch(err => console.log(err))
@@ -196,7 +196,6 @@ function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closePopups();
-        console.log(newCard);
       })
       .catch((err) => {
         console.log(err);

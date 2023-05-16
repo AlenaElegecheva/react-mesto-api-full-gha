@@ -31,8 +31,8 @@ module.exports.getAllCards = (req, res, next) => {
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const owner = req.user._id;
-  Card.create({ name, link, owner })
+  const userId = req.user._id;
+  Card.create({ name, link, owner: userId })
     .then((newCard) => res.status(200).send(newCard))
     .catch((err) => {
       // eslint-disable-next-line max-len
@@ -46,17 +46,18 @@ module.exports.createCard = (req, res, next) => {
 
 module.exports.deleteCard = (req, res, next) => {
   const { cardId } = req.params;
-  const owner = req.user._id;
+  const userId = req.user._id;
   Card.findById(cardId)
+    .populate(['owner', 'likes'])
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена!');
       }
-      if (String(card.owner) !== owner) {
+      if (String(card.owner) !== userId) {
         throw new ForbiddenError('Вы не можете удалить чужую карточку');
       }
       return Card.findByIdAndRemove(cardId)
-        .then((delCard) => res.status(200).send({ data: delCard }))
+        .then((delCard) => res.status(200).send({ delCard }))
         .catch(next);
     })
     .catch((err) => {

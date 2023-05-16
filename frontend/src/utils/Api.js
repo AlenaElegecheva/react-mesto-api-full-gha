@@ -31,7 +31,10 @@ class Api {
   setUsersData(data) {
     return fetch(this._baseUrl + '/users/me', {
       method: 'PATCH',
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: data.name,
+        about: data.about
+    }),
       headers: this._headers,
       credentials: "include"
     })
@@ -69,7 +72,10 @@ class Api {
   createCard(data) {
     return fetch(this._baseUrl + '/cards', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+    }),
       headers: this._headers,
       credentials: "include"
     })

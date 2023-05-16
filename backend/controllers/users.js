@@ -21,7 +21,7 @@ const userDataUpdate = (req, res, updateData, next) => { // функция-де�
     },
   )
     .then((user) => {
-      if (user) res.send({ data: user });
+      if (user) res.send(user);
       else {
         throw new NotFoundError('Пользователь не найден');
       }
@@ -40,7 +40,7 @@ const getUserData = (userData, req, res, next) => {
   User.findById(userData)
     .then((user) => {
       if (user) {
-        res.send({ data: user });
+        res.send(user);
       } else {
         next(new NotFoundError('Пользователь по указанному id не найден'));
       }
@@ -56,7 +56,7 @@ const getUserData = (userData, req, res, next) => {
 
 module.exports.getAllUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 

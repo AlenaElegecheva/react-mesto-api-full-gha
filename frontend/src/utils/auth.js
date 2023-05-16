@@ -29,12 +29,6 @@ export function login (email, password) {
     }
   })
     .then(checkResponse)
-    .then((res) => {
-      // if (res.token) {
-      //   localStorage.setItem("jwt", res.token);
-      // }
-      return res;
-    });
 }
 
 export function getToken() {

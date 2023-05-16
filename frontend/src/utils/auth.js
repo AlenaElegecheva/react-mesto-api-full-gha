@@ -40,6 +40,7 @@ export function login (email, password) {
 export function getToken(token) {
   return fetch(BASE_URL + '/users/me', {
     headers: {
+      "Accept": "application/json",
       "Content-Type": "application/json",
       "Authorization" : `Bearer ${token}`
     },

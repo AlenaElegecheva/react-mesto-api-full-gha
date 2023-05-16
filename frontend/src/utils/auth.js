@@ -30,19 +30,19 @@ export function login (email, password) {
   })
     .then(checkResponse)
     .then((res) => {
-      if (res.token) {
-        localStorage.setItem("jwt", res.token);
-      }
+      // if (res.token) {
+      //   localStorage.setItem("jwt", res.token);
+      // }
       return res;
     });
 }
 
-export function getToken(token) {
+export function getToken() {
   return fetch(BASE_URL + '/users/me', {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "Authorization" : `Bearer ${token}`
+      // "Authorization" : `Bearer ${token}`
     },
     credentials: "include"
   })

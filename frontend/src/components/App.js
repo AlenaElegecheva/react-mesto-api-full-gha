@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from './Header';
@@ -110,6 +111,7 @@ function App() {
 
   useEffect(() => { // проверка токена
     checkToken()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleLoginSubmit(inputValues) { // авторизация пользователя
@@ -140,9 +142,8 @@ function App() {
   }
 
   function checkToken() { // проверка токена
-    const jwt = localStorage.getItem('jwt')
-    if (jwt) {
-      auth.getToken(jwt)
+    // const jwt = localStorage.getItem('jwt')
+      auth.getToken()
         .then((res) => {
           if (res) {
             setLoggedIn(true);
@@ -151,13 +152,12 @@ function App() {
           }
         })
         .catch(err => console.log(err))
-    }
   }
 
   function handleSignOut() { // выход из профиля
     setLoggedIn(false);
     setUserInfo('');
-    localStorage.removeItem("jwt");
+    // localStorage.removeItem("jwt");
     navigate("/signin", { replace: true });
   }
 
@@ -197,6 +197,7 @@ function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closePopups();
+        console.log(newCard);
       })
       .catch((err) => {
         console.log(err);

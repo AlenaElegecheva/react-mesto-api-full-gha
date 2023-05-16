@@ -99,6 +99,7 @@ function App() {
       Promise.all([api.getInitialCards(), api.getUsersData()])
         .then((data) => {
           const dataCard = data[0]
+          console.log(dataCard);
           const dataUser = data[1]
           setCards(dataCard);
           setCurrentUser(dataUser);
@@ -147,7 +148,6 @@ function App() {
         .then((data) => {
             setLoggedIn(true);
             setUserInfo(data.email)
-            console.log(data);
             navigate('/', { replace: true })
         })
         .catch(err => console.log(err))

@@ -9,7 +9,7 @@ const { login, createUser } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const { LINK } = require('../utils/regex');
 const NotFoundError = require('../error/NotFoundError');
-// const cors = require('../middlewares/cors');
+
 const allowedCors = [
   'https://elegant.mesto.nomoredomains.monster',
   'http://elegant.mesto.nomoredomains.monster',
@@ -29,7 +29,6 @@ router.use(cors({
   origin: allowedCors,
   credentials: true,
 }));
-// router.use(cors);
 
 router.post('/signin', celebrate({
   body: Joi.object().keys({

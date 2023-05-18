@@ -12,10 +12,8 @@ const rootRoute = require('./routes/index');
 const genErrorHandler = require('./middlewares/genErrorHandler');
 const limiter = require('./middlewares/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
 
 const app = express();
-// app.use(cors);
 
 const { PORT = 3000 } = process.env;
 

@@ -8,6 +8,6 @@
 
 IP-адрес 158.160.100.73
 
-Frontend https://...
+Frontend https://https://elegant.mesto.nomoredomains.monster
 
-Backend https://...
+Backend https://api.https://elegant.mesto.nomoredomains.monster

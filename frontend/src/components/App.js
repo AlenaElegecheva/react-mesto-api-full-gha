@@ -99,7 +99,6 @@ function App() {
       Promise.all([api.getInitialCards(), api.getUsersData()])
         .then((data) => {
           const dataCard = data[0]
-          console.log(dataCard);
           const dataUser = data[1]
           setCards(dataCard);
           setCurrentUser(dataUser);

@@ -47,13 +47,14 @@ module.exports.createCard = (req, res, next) => {
 module.exports.deleteCard = (req, res, next) => {
   const { cardId } = req.params;
   const userId = req.user._id;
+  console.log(userId);
   Card.findById(cardId)
-    .populate(['owner', 'likes'])
     .then((card) => {
+      console.log(card.owner);
       if (!card) {
         throw new NotFoundError('Карточка не найдена!');
       }
-      if (String(card.owner) !== userId) {
+      if (!card.owner.equals(userId)) {
         throw new ForbiddenError('Вы не можете удалить чужую карточку');
       }
       return Card.findByIdAndRemove(cardId)

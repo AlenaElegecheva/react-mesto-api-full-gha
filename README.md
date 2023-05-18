@@ -5,8 +5,8 @@
 
 ## Ссылки на проект
 
-IP-адрес: 158.160.100.73
+- IP-адрес: 158.160.100.73
 
-Frontend https://elegant.mesto.nomoredomains.monster
+- Frontend https://elegant.mesto.nomoredomains.monster
 
-Backend https://api.elegant.mesto.nomoredomains.monster
+- Backend https://api.elegant.mesto.nomoredomains.monster
